@@ -1,0 +1,87 @@
+.cart-page {
+    margin-top: 5%;
+   
+  }
+  
+  .cart{
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  .cart-items-container {
+    margin-bottom: 20px;
+    margin-top: 5%;
+  }
+  
+  .cart-items-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    
+    margin-top: 7%;
+  }
+  
+  .cart-item-image {
+    width: 15%;
+    height: 15%;
+    margin-right: 4%; /* Space between image and text */
+  }
+  
+  .cart-item-text {
+    display: flex;
+    flex-direction: column; /* Stack name and price vertically */
+    justify-content: center; /* Vertically center the text */
+  }
+  
+  .cart-item h3, .cart-item p {
+    margin: 5px; 
+    text-align: center; 
+    font-size: 22px;
+    color: #333;
+  }
+  
+  
+  .remove-button {
+    margin-left: auto;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Add transition for shadow */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  .remove-button:hover {
+    background-color: rgb(132, 125, 125);
+  }
+  
+  .cart-summary {
+    margin-top: 20px;
+    color: #333;
+    
+  }
+  
+  .clear-cart-btn {
+    font-size: 25px;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Add transition for shadow */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    margin-bottom: 4%;
+    
+  }
+  
+  .clear-cart-btn:hover {
+    background-color: #8b8781;
+  }
+  
