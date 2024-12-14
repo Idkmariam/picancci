@@ -12,7 +12,10 @@ import Skirts from "./components/skirts";
 import Shoes from "./components/shoes";
 import Bags from "./components/bags";
 import Cart from './components/cart';
-import Profile from './components/profile';
+import Profile from './components/Profile';
+
+
+
 
 const App = () => {
   return (

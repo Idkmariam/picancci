@@ -13,7 +13,8 @@
   
   .profile-info {
     width: 100%;
-    max-width: 400px;
+    max-width: 1000px;
+    
     background-color: #f4f4f4;
     padding: 15px;
     border-radius: 10px;
@@ -23,11 +24,12 @@
   
   .profile-item {
     margin: 10px 0;
+    font-size: 20px;
   }
   
   .edit-profile-button, .logout-button {
     padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: 10px;
     border: none;
     border-radius: 5px;

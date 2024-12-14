@@ -10,6 +10,15 @@ const ProfilePage = () => {
     address: '123 Main Street, Anytown, USA',
   };
 
+  const handleEditProfile = () => {
+    console.log('Edit Profile clicked');
+  };
+  
+  const handleLogout = () => {
+    console.log('Log Out clicked');
+  };
+  
+
   return (
     <div className="profile-page">
         <Navbar />
@@ -28,8 +37,8 @@ const ProfilePage = () => {
           <strong>Address:</strong> {userData.address}
         </div>
       </div>
-      <button className="edit-profile-button">Edit Profile</button>
-      <button className="logout-button">Log Out</button>
+      <button className="edit-profile-button" onClick={handleEditProfile}>Edit Profile</button>
+      <button className="logout-button" onClick={handleLogout}>Log Out</button>
     </div>
   );
 };
