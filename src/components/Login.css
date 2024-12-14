@@ -1,7 +1,7 @@
 /* Login Page Container */
 .login-container {
     height: 100vh;
-    background: rgb(177, 157, 140);
+    background: linear-gradient(to bottom right,  rgb(177, 157, 140), #ebedee);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +25,7 @@
 /* Logo */
 .login-logo {
     width: 100%;
-    max-width: 250px;  /* Reduced the max-width */
+    max-width: 350px;  /* Reduced the max-width */
     margin-bottom: 20px;
 }
   

@@ -21,6 +21,7 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const { addItemToCart } = useCart();
   const [loading, setLoading] = useState(true);
+   const [clickedItem, setClickedItem] = useState(null);
 
   const productsRef = useRef(null);
   const navigate = useNavigate();
@@ -71,11 +72,14 @@ const Home = () => {
     productsRef.current?.scrollIntoView({ behavior: "smooth" }); 
   };
 
-  <Navbar 
-  toggleSidebar={toggleSidebar} 
-  searchQuery={searchQuery} 
-  handleSearch={(e) => setSearchQuery(e.target.value)} 
-/>
+  const handleItemClick = (item) => {
+    // If the clicked item is already selected, toggle its visibility off
+    if (clickedItem && clickedItem.id === item.id) {
+        setClickedItem(null); // Deselect the item
+    } else {
+        setClickedItem(item); // Select the clicked item
+    }
+};
 
 
   return (
@@ -90,19 +94,7 @@ const Home = () => {
     
 
 
-            {/* Optional: Sidebar for categories */}
-            {isSidebarOpen && (
-                <div className="sidebar">
-                    <h2>Our Category</h2>
-                    <ul>
-                        <li><a href="/outerwear">Outerwear</a></li>
-                        <li><a href="/pants">Pants</a></li>
-                        <li><a href="/skirts">Skirts</a></li>
-                        <li><a href="/shoes">Shoes</a></li>
-                        <li><a href="/bags">Bags</a></li>
-                    </ul>
-                </div>
-            )}
+          
         {/* Additional Content */}
         <div className="additional-content">
           <div className="image-container">
@@ -163,13 +155,22 @@ const Home = () => {
         {/* Items Section */}
         <div className="items-container">
         {filteredBestSelling.map((bestSelling) => (
-    <div key={bestSelling.id} className="item">
-      <img src={bestSelling.image} alt={bestSelling.name} className="item-image" />
-      <p className="item-name">{bestSelling.name}</p>
-      <p className="item-price">{bestSelling.price}</p>
-      <button className="add-to-cart-btn"  onClick={() => addItemToCart(bestSelling)}>Add to Cart</button>
-    </div>
-  ))}
+              <div key={bestSelling.id} className="item" onClick={() => handleItemClick(bestSelling)}>
+                {/* Conditionally render the description if clicked */}
+                {clickedItem && clickedItem.id === bestSelling.id ? (
+                  <p className="item-description">{bestSelling.description}</p>
+                ) : (
+                  <>
+                    <img src={bestSelling.image} alt={bestSelling.name} className="item-image" />
+                    <p className="item-name">{bestSelling.name}</p>
+                    <p className="item-price">{bestSelling.price}</p>
+                    <button className="add-to-cart-btn" onClick={() => addItemToCart(bestSelling)}>
+                      Add to Cart
+                    </button>
+                  </>
+                )}
+              </div>
+            ))}
          
         </div>
         </div>
@@ -181,13 +182,22 @@ const Home = () => {
 
         <div className="items-container-our-products">
         {filteredProducts.map((product) => (
-    <div key={product.id} className="item">
-      <img src={product.image} alt={product.name} className="item-image" />
-      <p className="item-name">{product.name}</p>
-      <p className="item-price">{product.price}</p>
-      <button className="add-to-cart-btn" onClick={() => addItemToCart(product)}>Add to Cart</button>
-    </div>
-  ))}
+              <div key={product.id} className="item" onClick={() => handleItemClick(product)}>
+                {/* Conditionally render the description if clicked */}
+                {clickedItem && clickedItem.id === product.id ? (
+                  <p className="item-description">{product.description}</p>
+                ) : (
+                  <>
+                    <img src={product.image} alt={product.name} className="item-image" />
+                    <p className="item-name">{product.name}</p>
+                    <p className="item-price">{product.price}</p>
+                    <button className="add-to-cart-btn" onClick={() => addItemToCart(product)}>
+                      Add to Cart
+                    </button>
+                  </>
+                )}
+              </div>
+            ))}
         </div>
         
         {/* About Us Section */}

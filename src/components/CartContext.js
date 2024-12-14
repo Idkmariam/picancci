@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 // Create CartContext
 const CartContext = createContext();
@@ -14,6 +14,13 @@ const CartProvider = ({ children }) => {
     const savedCartItems = localStorage.getItem('cartItems');
     return savedCartItems ? JSON.parse(savedCartItems) : [];
   });
+
+  // Effect to update localStorage whenever cartItems changes
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+  }, [cartItems]);
 
   // Function to add an item to the cart
   const addItemToCart = (item) => {
@@ -33,16 +40,12 @@ const CartProvider = ({ children }) => {
     }
 
     setCartItems(updatedCart);
-    // Save updated cart to localStorage
-    localStorage.setItem('cartItems', JSON.stringify(updatedCart));
   };
 
   // Function to remove an item from the cart
   const removeItemFromCart = (itemId) => {
     const updatedCart = cartItems.filter((item) => item.id !== itemId);
     setCartItems(updatedCart);
-    // Save updated cart to localStorage
-    localStorage.setItem('cartItems', JSON.stringify(updatedCart));
   };
 
   // Function to update the quantity of an item
@@ -54,15 +57,11 @@ const CartProvider = ({ children }) => {
     );
 
     setCartItems(updatedCart);
-    // Save updated cart to localStorage
-    localStorage.setItem('cartItems', JSON.stringify(updatedCart));
   };
 
   // Function to clear the entire cart
   const clearCart = () => {
     setCartItems([]);
-    // Clear the cart from localStorage
-    localStorage.removeItem('cartItems');
   };
 
   // Return the provider with context values

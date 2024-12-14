@@ -24,7 +24,7 @@ const ForgotPassword = () => {
     <div className="forgot-password-container">
       <div className="forgot-password-content">
       <img src={logoImage} alt="Logo" className="login-logo" />
-        <h2>Forgot Your Password?</h2>
+        <h2 className="forgot">Forgot Your Password?</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="email"

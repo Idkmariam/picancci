@@ -1,9 +1,9 @@
 /* Home Container */
+/* Home Container */
 .home-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    overflow-y: auto;
     width: 100%;
 }
 
@@ -11,25 +11,58 @@
 .top-container {
     position: relative;
     width: 100%;
-    height: 550PX; /* Adjust height */
-    background-color: rgb(177, 157, 140); /* Original background color */
+    min-height: 80vh; /* Full-height hero section (80% of the viewport height) */
+    background-color: rgb(177, 157, 140); /* Background color */
     z-index: 998;
     display: flex;
     flex-direction: column;
-    padding: 10px; /* Adjust padding */
+    justify-content: center; /* Vertically center content */
+    align-items: center; /* Horizontally center content */
+    padding: 20px; /* Adjust padding */
     box-sizing: border-box;
+    text-align: center; /* Ensure the text is centered */
+    
 }
 
+/* Text and Button Inside the Top Container */
+.left-text {
+    font-size: 40px; /* Larger font size for the main headline */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
 
+.additional-text {
+    font-size: 25px;
+    color: #555;
+    margin-bottom: 30px;
+}
 
-/* Additional Content Below Navbar */
+.explore-button {
+    padding: 12px 24px; /* Adjust button size */
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.explore-button:hover {
+    background-color: #555;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Additional Content Below the Top Container */
 .additional-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row-reverse;
-    height: calc(100% - 50px); /* Adjust for remaining height after navbar */
-    padding-top: 60px; /* Ensure spacing below navbar */
+    padding: 60px 20px;
+    height: auto; /* Allow this to grow naturally */
 }
 
 /* Image Container */
@@ -43,61 +76,21 @@
 .right-image {
     max-width: 100%;
     height: auto;
-    max-height: 400px; /* Ensure it stays within reasonable bounds */
+    max-height: 400px;
 }
 
-.text-container {
-    margin-left: 10%; /* Adjust margin for smaller height */
-    flex: 1;
-    
-}
-
-.left-text {
-    
-    font-size: 30px; /* Adjust font size for smaller space */
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.additional-text {
-    font-size: 25px; /* Adjust font size */
-    color: #555;
-    margin-top: 8px;
-}
-
-.explore-button {
-    margin-top: 15px;
-    padding: 8px 16px; /* Smaller button size */
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Add transition for shadow */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Outer shadow */
-}
-
-.explore-button:hover {
-    background-color: #555;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
-}
-
-
-  
-/* Main Content */
+/* Main Content (Everything Below the Hero Section) */
 .main-content {
     flex: 1;
     background-color: white;
     padding: 20px;
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 100%; /* Ensure the width is 100% */
+    width: 100%;
 }
+
 
 /* Best Selling */
 .best-selling {
@@ -152,8 +145,7 @@
     cursor: pointer;
     color: #333; /* Adjust as needed */
     margin-top: 5px;
-  }
-  
+}
 
 .item-name {
     font-size: 18px;
@@ -178,9 +170,8 @@
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
-    padding-left: 15%; 
+    padding-left: 15%;
     width: 1000px;
-    
 }
 
 .our-products-section .item {
@@ -206,16 +197,106 @@
 }
 
 .poster-section {
-    
     text-align: center;
     margin-top: 50px; /* You can adjust this value as needed */
     margin-bottom: 50px;
-  }
-  
-  .poster-image {
+}
+
+.poster-image {
     max-width: 100%;
-    
     height: 600px;
     border-radius: 10px; /* Optional: You can add some border radius for rounded corners */
-  }
-  
+}
+
+
+/* Responsive adjustments */
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+    .top-container {
+        height: 400px; /* Reduce height for smaller screens */
+        padding: 10px 5px; /* Adjust padding */
+    }
+
+    .additional-content {
+        flex-direction: column; /* Stack content vertically */
+        padding-top: 40px; /* Adjust space for the navbar */
+    }
+
+    .image-container {
+        max-height: 300px; /* Adjust for smaller image sizes */
+    }
+
+    .text-container {
+        margin-left: 5%; /* Adjust for smaller space */
+    }
+
+    .best-selling {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+
+    .text {
+        font-size: 16px; /* Adjust font size */
+    }
+
+    .items-container {
+        flex-wrap: wrap; /* Allow items to wrap */
+        overflow-x: visible; /* Disable horizontal scroll */
+        gap: 10px; /* Reduce gap between items */
+        padding-left: 5%; /* Adjust padding */
+    }
+
+    .item {
+        width: calc(50% - 10px); /* Adjust item width to fit two per row */
+    }
+
+    .our-products-section .items-container-our-products {
+        padding-left: 5%; /* Adjust padding */
+        width: 100%; /* Full width */
+    }
+
+    .our-products-section .item {
+        width: calc(50% - 10px); /* 2 items per row */
+    }
+
+    .poster-image {
+        height: 400px; /* Adjust poster height for smaller screens */
+    }
+}
+
+/* For mobile screens smaller than 480px */
+@media (max-width: 480px) {
+    .top-container {
+        height: 350px; /* Further reduce height */
+        padding: 5px; /* Adjust padding */
+    }
+
+    .best-selling {
+        font-size: 20px; /* Adjust font size */
+    }
+
+    .text {
+        font-size: 14px; /* Adjust font size */
+    }
+
+    .items-container {
+        gap: 5px; /* Further reduce gap between items */
+    }
+
+    .item {
+        width: 100%; /* Make items full width */
+    }
+
+    .our-products-section .items-container-our-products {
+        padding-left: 0; /* No left padding */
+        width: 100%; /* Full width */
+    }
+
+    .our-products-section .item {
+        width: 100%; /* Full width for mobile */
+    }
+
+    .poster-image {
+        height: 300px; /* Adjust poster height */
+    }
+}

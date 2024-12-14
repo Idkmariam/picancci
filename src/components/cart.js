@@ -58,21 +58,17 @@ const CartPage = () => {
       </div>
       
       {cartItems.length > 0 && (
-          <>
-            <div className="cart-summary">
-              <p>
-                <strong>Total Price: ${totalPrice}</strong>
-              </p>
-              <button className="clear-cart-btn" onClick={clearCart}>
-                Clear Cart
-              </button>
-            </div>
-
-           
+          <div className="cart-action-bar">
+            <p className="total-price">
+              <strong>Total price : ${totalPrice}</strong>
+            </p>
+            <button className="clear-cart-btn" onClick={clearCart}>
+              Clear Cart
+            </button>
             <button className="checkout-button" onClick={handleCheckout}>
               Checkout
             </button>
-          </>
+          </div>
         )}
     </div>
     </div>

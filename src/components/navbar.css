@@ -1,28 +1,28 @@
 /* Navbar */
 .navbar {
-    position: fixed; /* Change to fixed for consistent top position */
+    position: fixed;
     top: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(177, 157, 140); /* Match top-container background */
-    height: 70px; /* Fixed navbar height */
-    padding: 0 20px; /* Padding for content */
+    background-color: rgb(177, 157, 140); 
+    height: 70px;
+    padding: 0 20px;
     box-sizing: border-box;
-    z-index: 999; /* Ensure it stays above other content */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for separation */
-    
+    z-index: 999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+/* Project Name */
 .project-name {
     font-size: 27px;
     font-weight: bold;
     color: #333;
     font-family: 'elephant', sans-serif;
-    padding-right: 25%;
+    padding-right: 25%; /* Adjust for space on right */
 }
 
+/* Navbar Link Styling */
 .nav-link {
     color: #333;
     font-size: 22px;
@@ -32,7 +32,9 @@
     font-weight: bold;
 }
 
-
+.nav-link:hover {
+    color: #040303; /* Change color on hover */
+}
 
 /* Search Bar */
 .search-bar-container {
@@ -67,15 +69,13 @@
     height: 100%;
     background-color: rgb(223, 210, 197);
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    transform: translateX(-100%);
+    transform: translateX(-100%); /* Hidden by default */
     transition: transform 0.3s ease;
     z-index: 1000;
-    
 }
 
 .sidebar.open {
-    transform: translateX(0);
-    
+    transform: translateX(0); /* Show when 'open' class is added */
 }
 
 .sidebar-header {
@@ -105,48 +105,14 @@
     color: white;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .navbar {
-        padding: 0 10px;
-    }
-
-    .nav-link {
-        font-size: 18px;
-        padding: 15px;
-    }
-
-    .search-bar {
-        max-width: 150px;
-    }
-}
-
-@media (max-width: 480px) {
-    .navbar {
-        padding: 0 5px;
-    }
-
-    .nav-link {
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    .search-bar {
-        max-width: 120px;
-    }
-
-    .sidebar {
-        width: 200px;
-    }
-}
-
+/* Cart Link and Badge */
 .cart-link {
     position: relative;
     text-decoration: none;
     color: inherit;
-  }
-  
-  .cart-badge {
+}
+
+.cart-badge {
     position: absolute;
     top: 15px;
     right: -10px;
@@ -160,4 +126,56 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
-  }
+}
+
+/* For Mobile/Tablet Screens */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 10px; /* Reduce padding on smaller screens */
+    }
+
+    .nav-link {
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    .search-bar {
+        max-width: 150px; /* Make search bar smaller on mobile */
+    }
+
+    /* Adjust sidebar icon size for smaller screens */
+    .sidebar-icon {
+        font-size: 30px; /* Larger size for better visibility */
+    }
+
+    /* Ensure the cart link is accessible on smaller screens */
+    .cart-link {
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* For Very Small Screens (Mobile Phones) */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0 5px; /* Even smaller padding */
+    }
+
+    .nav-link {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .search-bar {
+        max-width: 120px; /* Even smaller search bar */
+    }
+
+    .sidebar {
+        width: 200px; /* Adjust sidebar width on smaller screens */
+    }
+
+    /* Sidebar icon size adjustments */
+    .sidebar-icon {
+        font-size: 26px; /* Smaller size for phones */
+    }
+}

@@ -13,6 +13,7 @@ import Shoes from "./components/shoes";
 import Bags from "./components/bags";
 import Cart from './components/cart';
 import Profile from './components/Profile';
+import EditProfile from './components/EditProfile';
 
 
 
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
         <Route  path="/profile" element={<Profile />} />
+         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/outerwear" element={<Tops />} />
         <Route path="/pants" element={<Pants />} />
         <Route path="/skirts" element={<Skirts />} />

@@ -12,6 +12,7 @@ const Shoes = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [loading, setLoading] = useState(true);
     const { addItemToCart } = useCart();
+    const [clickedItem, setClickedItem] = useState(null);
     
 
     useEffect(() => {
@@ -36,6 +37,15 @@ const Shoes = () => {
         shoes.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
 
+      const handleItemClick = (item) => {
+        // If the clicked item is already selected, toggle its visibility off
+        if (clickedItem && clickedItem.id === item.id) {
+            setClickedItem(null); // Deselect the item
+        } else {
+            setClickedItem(item); // Select the clicked item
+        }
+    };
+
     return (
         <div className="category-container">
             {/* Navbar */}
@@ -46,19 +56,7 @@ const Shoes = () => {
             />
 
 
-            {/* Optional: Sidebar for categories */}
-            {isSidebarOpen && (
-                <div className="sidebar">
-                    <h2>Our Category</h2>
-                    <ul>
-                        <li><a href="/outerwear">Outerwear</a></li>
-                        <li><a href="/pants">Pants</a></li>
-                        <li><a href="/skirts">Skirts</a></li>
-                        <li><a href="/shoes">Shoes</a></li>
-                        <li><a href="/bags">Bags</a></li>
-                    </ul>
-                </div>
-            )}
+           
 
             {/* Page Title and Description */}
             <h1>Shoes</h1>
@@ -67,14 +65,17 @@ const Shoes = () => {
             {/* Product Listing on the Main Screen */}
             <div className="our-products">
                 <div className="items">
-                    {filteredShoes.map((product) => (
-                        <div key={product.id} className="itemm">
+                {filteredShoes.map((product) => (
+                        <div key={product.id} className="itemm" onClick={() => handleItemClick(product)}>
                             <img src={product.image} alt={product.name} className="item-image" />
                             <div className="cont">
                                 <p className="item-name">{product.name}</p>
                                 <p className="item-price">{product.price}</p>
                                 <button className="add-to-cart-btn" onClick={() => addItemToCart(product)}>Add to Cart</button>
                             </div>
+                            {clickedItem && clickedItem.id === product.id && (
+                                <p className="item-description">{product.description}</p>
+                            )}
                         </div>
                     ))}
                 </div>

@@ -1,7 +1,7 @@
 /* SignUp Page Container */
 .signup-container {
     height: 100vh;
-    background: rgb(177, 157, 140);
+    background: linear-gradient(to bottom right,  rgb(177, 157, 140), #ebedee);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +25,7 @@
 /* Logo */
 .signup-logo {
     width: 100%;
-    max-width: 250px;  /* Reduced max-width for a smaller logo */
+    max-width: 350px;  /* Reduced max-width for a smaller logo */
     margin-bottom: 20px;
 }
   
