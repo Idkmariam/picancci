@@ -6,11 +6,15 @@ import './cart.css';
 const CartPage = () => {
   const { cartItems, removeItemFromCart, clearCart, updateItemQuantity } = useCart();
 
-  // Calculate total price
+  
   const totalPrice = cartItems
     .reduce((total, item) => total + parseFloat(item.price.replace('$', '')) * item.quantity, 0)
     .toFixed(2);
 
+    const handleCheckout = () => {
+      alert('Proceeding to checkout!');
+      // Add checkout logic here
+    };
 
   return (
     
@@ -54,11 +58,22 @@ const CartPage = () => {
       </div>
       
       {cartItems.length > 0 && (
-        <div className="cart-summary">
-          <p><strong>Total Price: ${totalPrice}</strong></p>
-          <button className="clear-cart-btn" onClick={clearCart}>Clear Cart</button>
-        </div>
-      )}
+          <>
+            <div className="cart-summary">
+              <p>
+                <strong>Total Price: ${totalPrice}</strong>
+              </p>
+              <button className="clear-cart-btn" onClick={clearCart}>
+                Clear Cart
+              </button>
+            </div>
+
+           
+            <button className="checkout-button" onClick={handleCheckout}>
+              Checkout
+            </button>
+          </>
+        )}
     </div>
     </div>
   );
