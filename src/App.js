@@ -12,6 +12,7 @@ import Skirts from "./components/skirts";
 import Shoes from "./components/shoes";
 import Bags from "./components/bags";
 import Cart from './components/cart';
+import Profile from './components/profile';
 
 const App = () => {
   return (
@@ -24,7 +25,7 @@ const App = () => {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/home" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
-
+        <Route  path="/profile" element={<Profile />} />
         <Route path="/outerwear" element={<Tops />} />
         <Route path="/pants" element={<Pants />} />
         <Route path="/skirts" element={<Skirts />} />
