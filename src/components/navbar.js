@@ -2,11 +2,13 @@ import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa"; // Optional for sidebar toggle
 import "./navbar.css";
+import { useCart } from "./CartContext";
 import { useNavigate } from "react-router-dom";
 
 
 const Navbar = ({ searchQuery, handleSearch }) => {
 
+    const { cartItems } = useCart();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false); // For mobile responsiveness
     const navigate = useNavigate();
 
@@ -20,13 +22,19 @@ const Navbar = ({ searchQuery, handleSearch }) => {
         setIsSidebarOpen(false); // Close sidebar after navigation
       };
     
+      const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+
   return (
     <nav className="navbar">
       <div className="project-name">Picancci</div>
       <div className="nav-links">
         <Link to="/home" className="nav-link">Home</Link>
         <Link to="/profile" className="nav-link">Profile</Link>
-        <Link to="/cart" className="nav-link">Cart</Link>
+        <Link to="/cart" className="nav-link cart-link">
+          Cart
+          {totalQuantity > 0 && <span className="cart-badge">{totalQuantity}</span>}
+        </Link>
         <Link to="/stylish" className="nav-link">Stylish</Link>
         
       </div>

@@ -17,7 +17,21 @@ const CartProvider = ({ children }) => {
 
   // Function to add an item to the cart
   const addItemToCart = (item) => {
-    const updatedCart = [...cartItems, item];
+    const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
+
+    let updatedCart;
+    if (existingItem) {
+      // If the item already exists, update its quantity
+      updatedCart = cartItems.map((cartItem) =>
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      );
+    } else {
+      // Otherwise, add the new item with a quantity of 1
+      updatedCart = [...cartItems, { ...item, quantity: 1 }];
+    }
+
     setCartItems(updatedCart);
     // Save updated cart to localStorage
     localStorage.setItem('cartItems', JSON.stringify(updatedCart));
@@ -26,6 +40,19 @@ const CartProvider = ({ children }) => {
   // Function to remove an item from the cart
   const removeItemFromCart = (itemId) => {
     const updatedCart = cartItems.filter((item) => item.id !== itemId);
+    setCartItems(updatedCart);
+    // Save updated cart to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+  };
+
+  // Function to update the quantity of an item
+  const updateItemQuantity = (itemId, newQuantity) => {
+    const updatedCart = cartItems.map((item) =>
+      item.id === itemId
+        ? { ...item, quantity: Math.max(newQuantity, 1) } // Ensure quantity is at least 1
+        : item
+    );
+
     setCartItems(updatedCart);
     // Save updated cart to localStorage
     localStorage.setItem('cartItems', JSON.stringify(updatedCart));
@@ -40,7 +67,9 @@ const CartProvider = ({ children }) => {
 
   // Return the provider with context values
   return (
-    <CartContext.Provider value={{ cartItems, addItemToCart, removeItemFromCart, clearCart }}>
+    <CartContext.Provider
+      value={{ cartItems, addItemToCart, removeItemFromCart, updateItemQuantity, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
